@@ -9,6 +9,12 @@ describe('vdom domProps module', () => {
     expect(elm.src).toBe('http://localhost/')
   })
 
+  it('should create an element with domProps', () => {
+    const vnode = new VNode('image', { domProps: { 'xlink:href': 'http://localhost/1.jpg' }})
+    const elm = patch(null, vnode)
+    expect(elm.href).toBe('http://localhost/1.jpg')
+  })
+
   it('should change the elements domProps', () => {
     const vnode1 = new VNode('a', { domProps: { src: 'http://localhost/' }})
     const vnode2 = new VNode('a', { domProps: { src: 'https://vuejs.org/' }})
